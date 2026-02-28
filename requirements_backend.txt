@@ -1,0 +1,62 @@
+# ══════════════════════════════════════════════════════
+# TradeForge AaaS - Requirements
+# Tested: Python 3.11 / 3.12 / 3.13, Streamlit Cloud
+# ══════════════════════════════════════════════════════
+
+# ─── Core Framework ────────────────────────────────────
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# ─── Database ──────────────────────────────────────────
+sqlalchemy==2.0.35
+asyncpg==0.29.0
+# NOTE: psycopg2-binary removed — requires pg_config on host.
+# Use asyncpg (above) for async DB, or install psycopg2-binary
+# manually on servers that have PostgreSQL dev headers.
+alembic==1.13.3
+
+# ─── Cache / Queue ─────────────────────────────────────
+redis==5.1.1
+celery[redis]==5.4.0
+
+# ─── Security / Auth ───────────────────────────────────
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.9
+
+# ─── HTTP Client ───────────────────────────────────────
+httpx==0.27.2
+aiohttp==3.10.9
+
+# ─── Blockchain / Web3 ─────────────────────────────────
+# FIX: web3>=7 bundles eth-account>=0.13 — no conflict
+web3==7.4.0
+# eth-account is a dependency of web3, do NOT pin separately
+
+# ─── CEX Trading ───────────────────────────────────────
+ccxt==4.4.1
+
+# ─── Quant / ML ────────────────────────────────────────
+pandas==2.2.3
+numpy==1.26.4
+scipy==1.14.1
+scikit-learn==1.5.2
+# vectorbt has heavy deps — install separately if needed:
+# pip install vectorbt==0.26.2
+
+# ─── Dashboard ─────────────────────────────────────────
+streamlit>=1.39.0
+plotly==5.24.1
+
+# ─── Payments ──────────────────────────────────────────
+stripe==10.12.0
+
+# ─── Monitoring ────────────────────────────────────────
+prometheus-fastapi-instrumentator==7.0.0
+structlog==24.4.0
+
+# ─── Utilities ─────────────────────────────────────────
+python-dotenv==1.0.1
+tenacity==9.0.0
